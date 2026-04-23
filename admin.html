@@ -73,6 +73,7 @@
                         <button onclick="openModal()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">+ Tambah Mahasiswa</button>
                         <button onclick="sortByNIM()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Urutkan NIM</button>
                         <button onclick="sortByStatus()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Urutkan Status</button>
+                        <button onclick="sortByNilai()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Urutkan Nilai</button>
                         <button onclick="clearArray()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Kosongkan Array</button>
                     </div>
                 </div>
@@ -277,6 +278,11 @@
                 show();
             }
 
+            function sortByNilai() {
+                mahasiswaList.sort((a, b) => b.totalNilai() - a.totalNilai());
+                show(); 
+            }
+
             function jumlahAktifTidak() {
                 return mahasiswaList.reduce(
                     (counts, mhs) => {
@@ -290,6 +296,16 @@
 
             function clearArray() {
                 clear();
+            }
+
+            function toggleProfileMenu() {
+                const menu = document.getElementById('profileMenu');
+                menu.classList.toggle('hidden');
+            }
+
+            function logout() {
+                localStorage.removeItem('isLoggedIn');
+                window.location.href = 'login.html';
             }
 
             function displaySummary() {
@@ -371,6 +387,10 @@
             }
 
             document.addEventListener('DOMContentLoaded', () => {
+                if (localStorage.getItem('isLoggedIn') !== 'true') {
+                    window.location.href = 'login.html';
+                    return;
+                }
                 show();
             });
         </script>
