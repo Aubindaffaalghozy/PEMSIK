@@ -49,65 +49,52 @@
         </header>
 		<!-- Content -->
         <main class="flex-1 p-6 overflow-x-auto">
-            <div class="bg-white shadow rounded-lg p-4">
-                <div class="flex justify-between items-center mb-4">
-                <h2 class="text-lg font-semibold">Daftar Mahasiswa</h2>
-                <button onclick="openModal()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                    + Tambah Mahasiswa
-                </button>
+            <div class="grid gap-4 mb-6 lg:grid-cols-3">
+                <div class="bg-white rounded-lg shadow p-4">
+                    <h3 class="text-sm font-semibold text-gray-500 uppercase">Jumlah Mahasiswa</h3>
+                    <p id="countCard" class="mt-4 text-3xl font-bold text-blue-700">0</p>
                 </div>
-                <table class="w-full text-sm text-gray-700">
-                <thead class="bg-blue-600 text-white">
-                    <tr>
-                    <th class="py-2 px-4 text-left">NIM</th>
-                    <th class="py-2 px-4 text-left">Nama</th>
-                    <th class="py-2 px-4 text-center">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="even:bg-gray-100 odd:bg-white">
-                    <td class="py-2 px-4">A11.2023.15324</td>
-                    <td class="py-2 px-4">Aubin Daffa Al Ghozy</td>
-                    <td class="py-2 px-4 text-center space-x-2">
-                        <button class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600" onclick="editMahasiswa(this)">Edit</button>
-                        <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600" onclick="deleteMahasiswa(this)">Hapus</button>
-                    </td>
-                    </tr>
-                    <tr class="even:bg-gray-100 odd:bg-white">
-                    <td class="py-2 px-4">A11.2023.15325</td>
-                    <td class="py-2 px-4">Ahmad Fauzi</td>
-                    <td class="py-2 px-4 text-center space-x-2">
-                        <button class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600" onclick="editMahasiswa(this)">Edit</button>
-                        <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600" onclick="deleteMahasiswa(this)">Hapus</button>
-                    </td>
-                    </tr>
-                    <tr class="even:bg-gray-100 odd:bg-white">
-                    <td class="py-2 px-4">A11.2023.15326</td>
-                    <td class="py-2 px-4">Dewi Lestari</td>
-                    <td class="py-2 px-4 text-center space-x-2">
-                        <button class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600" onclick="editMahasiswa(this)">Edit</button>
-                        <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600" onclick="deleteMahasiswa(this)">Hapus</button>
-                    </td>
-                    </tr>
-                    <tr class="even:bg-gray-100 odd:bg-white">
-                    <td class="py-2 px-4">A11.2023.15327</td>
-                    <td class="py-2 px-4">Rudi Hartono</td>
-                    <td class="py-2 px-4 text-center space-x-2">
-                        <button class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600" onclick="editMahasiswa(this)">Edit</button>
-                        <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600" onclick="deleteMahasiswa(this)">Hapus</button>
-                    </td>
-                    </tr>
-                    <tr class="even:bg-gray-100 odd:bg-white">
-                    <td class="py-2 px-4">A11.2023.15328</td>
-                    <td class="py-2 px-4">Budi Santoso</td>
-                    <td class="py-2 px-4 text-center space-x-2">
-                        <button class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600" onclick="editMahasiswa(this)">Edit</button>
-                        <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600" onclick="deleteMahasiswa(this)">Hapus</button>
-                    </td>
-                    </tr>
-                </tbody>
-
-                </table>
+                <div class="bg-white rounded-lg shadow p-4">
+                    <h3 class="text-sm font-semibold text-gray-500 uppercase">Aktif / Tidak Aktif</h3>
+                    <p id="statusCard" class="mt-4 text-2xl font-semibold text-green-700">0 Aktif, 0 Tidak Aktif</p>
+                </div>
+                <div class="bg-white rounded-lg shadow p-4">
+                    <h3 class="text-sm font-semibold text-gray-500 uppercase">Informasi Cepat</h3>
+                    <p id="infoCard" class="mt-4 text-sm text-gray-700 leading-6">Urutkan data, tambahkan mahasiswa baru, dan lihat ringkasan nilai.</p>
+                </div>
+            </div>
+            <div class="bg-white shadow rounded-lg p-4 mb-6">
+                <div class="flex flex-col gap-3 lg:flex-row lg:justify-between lg:items-center mb-4">
+                    <div>
+                        <h2 class="text-lg font-semibold">Daftar Mahasiswa</h2>
+                        <p class="text-sm text-gray-500">Kelola mahasiswa, nilai, status, dan laporan IPS.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="openModal()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">+ Tambah Mahasiswa</button>
+                        <button onclick="sortByNIM()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Urutkan NIM</button>
+                        <button onclick="sortByStatus()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Urutkan Status</button>
+                        <button onclick="clearArray()" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Kosongkan Array</button>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-max text-sm text-gray-700">
+                        <thead class="bg-blue-600 text-white uppercase text-xs tracking-wider">
+                            <tr>
+                                <th class="py-3 px-4 text-left">NIM</th>
+                                <th class="py-3 px-4 text-left">Nama</th>
+                                <th class="py-3 px-4 text-center">Status</th>
+                                <th class="py-3 px-4 text-center">Tugas</th>
+                                <th class="py-3 px-4 text-center">UTS</th>
+                                <th class="py-3 px-4 text-center">UAS</th>
+                                <th class="py-3 px-4 text-center">Total</th>
+                                <th class="py-3 px-4 text-center">IPS</th>
+                                <th class="py-3 px-4 text-center">Kategori</th>
+                                <th class="py-3 px-4 text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="mahasiswaTableBody"></tbody>
+                    </table>
+                </div>
             </div>
         </main>
 		<!-- Footer -->
@@ -123,6 +110,7 @@
                 <button onclick="closeModal()" class="text-gray-600 hover:text-red-500">&times;</button>
                 </div>
                 <form id="mahasiswaForm" class="p-4 space-y-4" onsubmit="submitForm(event)">
+                <input type="hidden" id="editNim" name="editNim" />
                 <div>
                     <label for="nim" class="block text-sm font-medium">NIM</label>
                     <input type="text" id="nim" name="nim" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" />
@@ -131,26 +119,212 @@
                     <label for="nama" class="block text-sm font-medium">Nama</label>
                     <input type="text" id="nama" name="nama" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" />
                 </div>
+                <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+                    <div>
+                        <label for="tugas" class="block text-sm font-medium">Tugas</label>
+                        <input type="number" id="tugas" name="tugas" min="0" max="100" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" />
+                    </div>
+                    <div>
+                        <label for="uts" class="block text-sm font-medium">UTS</label>
+                        <input type="number" id="uts" name="uts" min="0" max="100" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" />
+                    </div>
+                    <div>
+                        <label for="uas" class="block text-sm font-medium">UAS</label>
+                        <input type="number" id="uas" name="uas" min="0" max="100" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-300" />
+                    </div>
+                </div>
+                <div>
+                    <label for="status" class="block text-sm font-medium">Status</label>
+                    <select id="status" name="status" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-300">
+                        <option value="Aktif">Aktif</option>
+                        <option value="Tidak Aktif">Tidak Aktif</option>
+                    </select>
+                </div>
                 <div class="flex justify-end space-x-2">
                     <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500">Batal</button>
-                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Simpan</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" id="modalSubmitButton">Simpan</button>
                 </div>
                 </form>
             </div>
         </div>
          <!-- Script -->
         <script>
-            function toggleProfileMenu() {
-                document.getElementById('profileMenu').classList.toggle('hidden');
+            class Mahasiswa {
+                constructor(nim, nama, tugas, uts, uas, status = 'Aktif') {
+                    this.nim = nim;
+                    this.nama = nama;
+                    this.tugas = tugas;
+                    this.uts = uts;
+                    this.uas = uas;
+                    this.status = status;
+                }
+
+                totalNilai() {
+                    return this.tugas + this.uts + this.uas;
+                }
+
+                rataRata() {
+                    return this.totalNilai() / 3;
+                }
+
+                kategoriNilai() {
+                    const avg = this.rataRata();
+                    if (avg >= 85) return 'A';
+                    if (avg >= 70) return 'B';
+                    if (avg >= 55) return 'C';
+                    if (avg >= 40) return 'D';
+                    return 'E';
+                }
+
+                IPS() {
+                    return Math.min(4.0, +(this.rataRata() / 25).toFixed(2));
+                }
             }
 
-            function logout() {
-                alert('Logout berhasil!');
+            const mahasiswaList = [
+                new Mahasiswa('A11.2023.15324', 'Aubin Daffa Al Ghozy', 80, 78, 85, 'Aktif'),
+                new Mahasiswa('A11.2023.15325', 'Ahmad Fauzi', 70, 65, 72, 'Aktif'),
+                new Mahasiswa('A11.2023.15326', 'Dewi Lestari', 60, 55, 65, 'Tidak Aktif'),
+                new Mahasiswa('A11.2023.15327', 'Rudi Hartono', 88, 92, 90, 'Aktif'),
+                new Mahasiswa('A11.2023.15328', 'Budi Santoso', 50, 48, 55, 'Tidak Aktif')
+            ];
+
+            function show() {
+                const tbody = document.getElementById('mahasiswaTableBody');
+                tbody.innerHTML = '';
+                mahasiswaList.forEach((mhs) => {
+                    const row = document.createElement('tr');
+                    row.className = 'even:bg-gray-100 odd:bg-white';
+                    row.innerHTML = `
+                        <td class="py-2 px-4">${mhs.nim}</td>
+                        <td class="py-2 px-4">${mhs.nama}</td>
+                        <td class="py-2 px-4 text-center">${mhs.status}</td>
+                        <td class="py-2 px-4 text-center">${mhs.tugas}</td>
+                        <td class="py-2 px-4 text-center">${mhs.uts}</td>
+                        <td class="py-2 px-4 text-center">${mhs.uas}</td>
+                        <td class="py-2 px-4 text-center">${totalNilai(mhs)}</td>
+                        <td class="py-2 px-4 text-center">${IPS(mhs).toFixed(2)}</td>
+                        <td class="py-2 px-4 text-center">${kategoriNilai(mhs)}</td>
+                        <td class="py-2 px-4 text-center space-x-2 whitespace-nowrap">
+                            <button class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600" onclick="editMahasiswa('${mhs.nim}')">Edit</button>
+                            <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600" onclick="deleteMahasiswa('${mhs.nim}')">Hapus</button>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+                displaySummary();
             }
 
-            function openModal(editMode = false, row = null) {
-                document.getElementById('modal').classList.remove('hidden');
+            function add(mahasiswa) {
+                mahasiswaList.push(mahasiswa);
+                show();
+            }
+
+            function update(nim, updatedData) {
+                const index = mahasiswaList.findIndex((mhs) => mhs.nim === nim);
+                if (index !== -1) {
+                    mahasiswaList[index] = new Mahasiswa(
+                        updatedData.nim,
+                        updatedData.nama,
+                        updatedData.tugas,
+                        updatedData.uts,
+                        updatedData.uas,
+                        updatedData.status
+                    );
+                    show();
+                }
+            }
+
+            function deleteById(nim) {
+                const index = mahasiswaList.findIndex((mhs) => mhs.nim === nim);
+                if (index !== -1) {
+                    mahasiswaList.splice(index, 1);
+                    show();
+                }
+            }
+
+            function totalNilai(mahasiswa) {
+                return mahasiswa.totalNilai();
+            }
+
+            function kategoriNilai(mahasiswa) {
+                return mahasiswa.kategoriNilai();
+            }
+
+            function IPS(mahasiswa) {
+                return mahasiswa.IPS();
+            }
+
+            function clear() {
+                mahasiswaList.length = 0;
+                show();
+            }
+
+            function jumlahMahasiswa() {
+                return mahasiswaList.length;
+            }
+
+            function sortByNIM() {
+                mahasiswaList.sort((a, b) => a.nim.localeCompare(b.nim));
+                show();
+            }
+
+            function sortByStatus() {
+                mahasiswaList.sort((a, b) => {
+                    if (a.status === b.status) return a.nim.localeCompare(b.nim);
+                    return a.status === 'Aktif' ? -1 : 1;
+                });
+                show();
+            }
+
+            function jumlahAktifTidak() {
+                return mahasiswaList.reduce(
+                    (counts, mhs) => {
+                        if (mhs.status === 'Aktif') counts.aktif += 1;
+                        else counts.tidakAktif += 1;
+                        return counts;
+                    },
+                    { aktif: 0, tidakAktif: 0 }
+                );
+            }
+
+            function clearArray() {
+                clear();
+            }
+
+            function displaySummary() {
+                document.getElementById('countCard').textContent = jumlahMahasiswa();
+                const { aktif, tidakAktif } = jumlahAktifTidak();
+                document.getElementById('statusCard').textContent = `${aktif} Aktif, ${tidakAktif} Tidak Aktif`;
+                document.getElementById('infoCard').textContent = `Data mahasiswa tersedia ${jumlahMahasiswa()} item. Gunakan tombol untuk mengurutkan, menambah, atau menghapus data.`;
+            }
+
+            function openModal(editMode = false, nim = null) {
+                const modal = document.getElementById('modal');
+                const title = document.getElementById('modalTitle');
+                const submitButton = document.getElementById('modalSubmitButton');
+                const editNimInput = document.getElementById('editNim');
                 document.getElementById('mahasiswaForm').reset();
+
+                if (editMode && nim) {
+                    const mahasiswa = mahasiswaList.find((mhs) => mhs.nim === nim);
+                    if (!mahasiswa) return;
+                    title.textContent = 'Edit Mahasiswa';
+                    submitButton.textContent = 'Update';
+                    document.getElementById('nim').value = mahasiswa.nim;
+                    document.getElementById('nama').value = mahasiswa.nama;
+                    document.getElementById('tugas').value = mahasiswa.tugas;
+                    document.getElementById('uts').value = mahasiswa.uts;
+                    document.getElementById('uas').value = mahasiswa.uas;
+                    document.getElementById('status').value = mahasiswa.status;
+                    editNimInput.value = nim;
+                } else {
+                    title.textContent = 'Tambah Mahasiswa';
+                    submitButton.textContent = 'Simpan';
+                    editNimInput.value = '';
+                }
+
+                modal.classList.remove('hidden');
             }
 
             function closeModal() {
@@ -159,19 +333,46 @@
 
             function submitForm(event) {
                 event.preventDefault();
-                alert('Mahasiswa berhasil ditambah!');
+                const nim = document.getElementById('nim').value.trim();
+                const nama = document.getElementById('nama').value.trim();
+                const tugas = Number(document.getElementById('tugas').value);
+                const uts = Number(document.getElementById('uts').value);
+                const uas = Number(document.getElementById('uas').value);
+                const status = document.getElementById('status').value;
+                const editNimValue = document.getElementById('editNim').value;
+
+                if (!nim || !nama) {
+                    alert('NIM dan Nama harus diisi.');
+                    return;
+                }
+
+                const mahasiswaData = new Mahasiswa(nim, nama, tugas, uts, uas, status);
+
+                if (editNimValue) {
+                    update(editNimValue, mahasiswaData);
+                    alert('Mahasiswa berhasil di-update!');
+                } else {
+                    add(mahasiswaData);
+                    alert('Mahasiswa berhasil ditambah!');
+                }
+
                 closeModal();
             }
 
-            function editMahasiswa(button) {
-                alert('Mahasiswa berhasil di-edit! hehe');
+            function editMahasiswa(nim) {
+                openModal(true, nim);
             }
 
-            function deleteMahasiswa(button) {
-                if (confirm('Apakah Anda yakin ingin menghapus mahasiswa ini?')) {
-                alert('Mahasiswa berhasil terhapus!');
+            function deleteMahasiswa(nim) {
+                if (confirm('Apakah Anda yakin ingin menghapus mahasiswa dengan NIM ' + nim + ' ?')) {
+                    deleteById(nim);
+                    alert('Mahasiswa berhasil terhapus!');
                 }
             }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                show();
+            });
         </script>
     </div>
 </body>
